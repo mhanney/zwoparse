@@ -1,0 +1,25 @@
+<workout_file>
+    <author>M.Hanney [KRT] (B)</author>
+    <name>Jon's Mix</name>
+    <description>This workout was often used by the Zwift development team to test features as well as get a solid hour of training in. It starts with a brief warmup and goes straight into short anaerobic bursts, shortly followed by max effort sprint training, only to be finished with 2 10 minute blocks of Sweet Spot Training.</description>
+    <sportType>bike</sportType>
+    <tags/>
+    <workout>
+        <Warmup Duration="360.00003" PowerLow="0.30000001" PowerHigh="0.69999999" pace="0"/>
+        <IntervalsT Repeat="3" OnDuration="60.000004" OffDuration="90.000008" OnPower="1.5" OffPower="0.55000001" pace="0"/>
+        <SteadyState Duration="10" Power="2.6500001" pace="0"/>
+        <SteadyState Duration="120.00001" Power="0.64999998" pace="0"/>
+        <SteadyState Duration="10" Power="2.6500001" pace="0"/>
+        <SteadyState Duration="90.000008" Power="0.55000001" pace="0"/>
+        <SteadyState Duration="10" Power="2.6500001" pace="0"/>
+        <SteadyState Duration="60.000004" Power="0.44999999" pace="0"/>
+        <SteadyState Duration="10" Power="2.6500001" pace="0"/>
+        <SteadyState Duration="30.000002" Power="0.35000002" pace="0"/>
+        <SteadyState Duration="10" Power="2.6500001" pace="0"/>
+        <SteadyState Duration="300" Power="0.60000002" pace="0"/>
+        <SteadyState Duration="600" Power="0.88999999" pace="0"/>
+        <SteadyState Duration="300" Power="0.60000002" pace="0"/>
+        <SteadyState Duration="600" Power="0.88999999" pace="0"/>
+        <Cooldown Duration="300" PowerLow="0.69999999" PowerHigh="0.30000001" pace="0"/>
+    </workout>
+</workout_file>
