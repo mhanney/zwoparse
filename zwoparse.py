@@ -5,39 +5,47 @@ Parse a Zwift Workout XML file and output a plain text file description or csv.
 Usage:
 ======
 
-usage: zwoparser.py [-h] [-f FTP] [-k KG] [-o OUTFILE] file
+usage: zwoparser.py [-h] [-f FTP] [-k KG] [-t {txt|csv|json}] [-o OUTFILE] file
 
-example: python zwoparser.py ./test/KRT-SQT-01.zwo -f 266 -k 71
+example: python zwoparser.py JonsMix.zwo -f 266 -k 71 -t txt workout.txt
 
 positional arguments:
   file
 
 optional arguments:
-  -h, --help            show this help message and exit
+  -h, --help            Show this help message and exit
+  -t, --type            The type of file to produce. csv = comma separated values file, txt = plain english, json = javascript object notation
   -f FTP, --ftp FTP     The rider's ftp as an integer, e.g. 266
   -k KG, --kg KG        The rider's weight in kilograms to the nearest
                         integer, e.g. 71
+  -v, --verbose         Verbose - also output to stdout
   -o OUTFILE, --outfile OUTFILE
-                        The name of the output file, defauts to workout.csv if
+                        The name of the output file, defauts to workout.txt if
                         none given
 """
 import argparse
 import xml.etree.ElementTree as ET
 import datetime
 import json
+import sys
 
 
 class Power:
+    """ A simple class to represent min and max power targets """
+
     def __init__(self, min_intensity, max_intensity):
         self.min_intensity = min_intensity
         self.max_intensity = max_intensity
 
     def toJSON(self):
+        """ dumps self as json """
         return json.dumps(self, default=lambda o: o.__dict__,
                           sort_keys=True, indent=4)
 
 
 class Segment:
+    """ A simple class to represent a segment of a workout """
+
     def __init__(self, start_time, end_time, segment_type, power, cadence=None, working=False):
         self.start_time = start_time
         self.end_time = end_time
@@ -52,6 +60,7 @@ class Segment:
             self.cadence = cadence
 
     def duration(self):
+        """ returns the duration of the segment of the workout """
         return self.end_time - self.start_time
 
     def human_duration(self):
@@ -68,7 +77,28 @@ class Segment:
 
         return "%d mins %d secs" % (mins, secs)
 
+    def human_type(self):
+        """ returns the segment_type in a more humanly readable format """
+        if self.segment_type == "warmup":
+            return "Warm up"
+
+        elif self.segment_type == "cooldown":
+            return "Cool down"
+
+        elif self.segment_type == "freeride":
+            return "Free ride"
+
+        elif self.segment_type == "steadystate":
+            return "Steady state"
+
+        elif self.segment_type == "intervalst":
+            if self.working:
+                return "Work Interval"
+            else:
+                return "Rest Interval"
+
     def toJSON(self):
+        """ dumps self as json """
         return json.dumps(self, default=lambda o: o.__dict__,
                           sort_keys=True, indent=4)
 
@@ -96,7 +126,7 @@ def convert_to_watts_per_kilo(value, ftp_watts, kilos):
     """ takes a floating point number between 0 and 1
     ftp absolute watts, and weight in kg
     and returns the target effort as W/kg as a string """
-    return "%s W/kg" % round(float(value) * ftp_watts / kilos, 1)
+    return "%s" % round(float(value) * ftp_watts / kilos, 1)
 
 
 def parse_power(node):
@@ -172,12 +202,7 @@ def parse(xmlstring):
             cadence = node.get("Cadence")
             cadence_resting = node.get("CadenceResting")
 
-            interval_total_duration = round_to_nearest_second(
-                on_duration) + round_to_nearest_second(off_duration)
-
-            interval_set_total_duration = repeat * interval_total_duration
-
-            for interval in range(0, repeat):
+            for i in range(0, repeat):
                 end_time = time + round_to_nearest_second(on_duration)
                 segments.append(
                     Segment(time, end_time, lower_tag, on_power, cadence, True))
@@ -196,10 +221,13 @@ def main():
 
     ftp = float(266)
     kilos = float(71)
-    outfile = "workout.csv"
+    filetype = "txt"
+    filename = "workout"
+    verbose = True
 
     parser = argparse.ArgumentParser(description=(
-        """Converts a Zwift Workout File to csv text file."""))
+        """Converts a Zwift Workout File to csv or plain text file."""))
+
     parser.add_argument(
         "-f",
         "--ftp",
@@ -211,6 +239,20 @@ def main():
         "--kg",
         type=int,
         help="The rider's weight in kilograms to the nearest integer, e.g. 71")
+
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        type=bool,
+        help="Also output to stdout")
+
+    parser.add_argument(
+        "-t",
+        "--type",
+        choices=['txt', 'csv', 'json'],
+        type=str,
+        help="The type of file to produce. csv = comma separated values file, txt = plain english. json = JavaScript object notation. The default is txt."
+    )
 
     parser.add_argument(
         "-o",
@@ -228,34 +270,78 @@ def main():
     if args.kg != None:
         kilos = args.kg
 
-    if args.outfile != None:
-        outfile = args.outfile
+    if args.verbose != None:
+        verbose = args.verbose
 
-    text_file = open(outfile, "w")
+    if args.type != None:
+        filetype = args.type
+
+    if args.outfile != None:
+        outfile_with_extension = args.outfile
+    else:
+        outfile_with_extension = "%s.%s" % (filename, filetype)
+
+    lines = []
 
     with args.file as input_file:
         xmlstring = input_file.read()
         workout = parse(xmlstring)
 
-        text_file.write(
-            'Type, StartTime, EndTime, Duration, Duration Formatted, Min Power (% FTP), Min Power (W), Min Power (W/Kg), Max Power  (% FTP), Min Power (W), Min Power (W/Kg), Tempo, Work\n')
+        if filetype == "csv":
+            lines.append('Type, StartTime, EndTime, Duration, Duration Formatted, Min Power (% FTP), Min Power (W), Min Power (W/Kg), Max Power  (% FTP), Min Power (W), Min Power (W/Kg), Tempo, Work\n')
 
-        for segment in workout['segments']:
-            text_file.write('%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s\n' % (segment.segment_type, segment.start_time,
-                                                                                      segment.end_time, segment.duration(), segment.human_duration(),
-                                                                                      round_to_percentage(
-                                                                                          segment.power.min_intensity),
-                                                                                      convert_to_abs_power(
-                                                                                          segment.power.min_intensity, ftp),
-                                                                                      convert_to_watts_per_kilo(
-                                                                                          segment.power.min_intensity, ftp, kilos),
-                                                                                      round_to_percentage(
-                                                                                          segment.power.max_intensity),
-                                                                                      convert_to_abs_power(
-                                                                                          segment.power.max_intensity, ftp),
-                                                                                      convert_to_watts_per_kilo(
-                                                                                          segment.power.max_intensity, ftp, kilos),
-                                                                                      segment.cadence, segment.working))
+            for segment in workout['segments']:
+                lines.append('%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s\n' % (segment.segment_type, segment.human_type(), segment.start_time,
+                                                                                           segment.end_time, segment.duration(), segment.human_duration(),
+                                                                                           round_to_percentage(
+                    segment.power.min_intensity),
+                    convert_to_abs_power(
+                    segment.power.min_intensity, ftp),
+                    convert_to_watts_per_kilo(
+                    segment.power.min_intensity, ftp, kilos),
+                    round_to_percentage(
+                    segment.power.max_intensity),
+                    convert_to_abs_power(
+                    segment.power.max_intensity, ftp),
+                    convert_to_watts_per_kilo(
+                    segment.power.max_intensity, ftp, kilos),
+                    segment.cadence, segment.working))
+
+        elif filetype == "json":
+            segments_json = ','.join([x.toJSON() for x in workout['segments']])
+            lines.append('{"name": %s, "description" : %s, "segments":[%s]}' % (
+                json.dumps(workout['name']), json.dumps(workout['description']), segments_json))
+
+        else:
+            lines.append("%s\n\n" % workout['name'])
+
+            lines.append("%s\n\n" % workout['description'])
+
+            for segment in workout['segments']:
+                if segment.power.min_intensity:
+                    intensity = "%s W to %s W (%s W/Kg to %s W/Kg) (%s FTP to %s FTP)" % (convert_to_abs_power(segment.power.min_intensity, ftp),
+                                                                                          convert_to_abs_power(
+                        segment.power.max_intensity, ftp),
+                        convert_to_watts_per_kilo(
+                        segment.power.min_intensity, ftp, kilos),
+                        convert_to_watts_per_kilo(
+                            segment.power.max_intensity, ftp, kilos),
+                        round_to_percentage(segment.power.min_intensity),
+                        round_to_percentage(segment.power.max_intensity))
+                else:
+                    intensity = "%s W (%s W/Kg) (%s FTP)" % (convert_to_abs_power(segment.power.max_intensity, ftp),
+                                                             convert_to_watts_per_kilo(
+                        segment.power.max_intensity, ftp, kilos),
+                        round_to_percentage(segment.power.max_intensity))
+
+                lines.append("%s for %s at %s\n" % (
+                    segment.human_type(), segment.human_duration(), intensity))
+
+        text_file = open(outfile_with_extension, "w")
+        for line in lines:
+            text_file.write(line)
+            if verbose:
+                sys.stdout.write(line)
 
 
 if __name__ == '__main__':
