@@ -112,7 +112,7 @@ def round_to_nearest_second(value):
 def round_to_percentage(value):
     """ takes a floating point number between 0 and 1 and returns
     the percentage value as a string """
-    return "%d%%" % round(100 * float(value))
+    return "%d" % round(100 * float(value))
 
 
 def convert_to_abs_power(value, ftp_watts):
@@ -319,8 +319,8 @@ def main():
 
             for segment in workout['segments']:
                 if segment.power.min_intensity:
-                    intensity = "%s W to %s W (%s W/Kg to %s W/Kg) (%s FTP to %s FTP)" % (convert_to_abs_power(segment.power.min_intensity, ftp),
-                                                                                          convert_to_abs_power(
+                    intensity = "%s W to %s W (%s W/Kg to %s W/Kg) (%s%% FTP to %s%% FTP)" % (convert_to_abs_power(segment.power.min_intensity, ftp),
+                                                                                              convert_to_abs_power(
                         segment.power.max_intensity, ftp),
                         convert_to_watts_per_kilo(
                         segment.power.min_intensity, ftp, kilos),
@@ -329,8 +329,8 @@ def main():
                         round_to_percentage(segment.power.min_intensity),
                         round_to_percentage(segment.power.max_intensity))
                 else:
-                    intensity = "%s W (%s W/Kg) (%s FTP)" % (convert_to_abs_power(segment.power.max_intensity, ftp),
-                                                             convert_to_watts_per_kilo(
+                    intensity = "%s W (%s W/Kg) (%s%% FTP)" % (convert_to_abs_power(segment.power.max_intensity, ftp),
+                                                               convert_to_watts_per_kilo(
                         segment.power.max_intensity, ftp, kilos),
                         round_to_percentage(segment.power.max_intensity))
 

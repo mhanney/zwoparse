@@ -67,27 +67,27 @@ python zwoparse.py JonsMix.zwo -f 266 -k 71 -t csv
 
 ```
 Type, StartTime, EndTime, Duration, Duration Formatted, Min Power (% FTP), Min Power (W), Min Power (W/Kg), Max Power  (% FTP), Min Power (W), Min Power (W/Kg), Tempo, Work
-warmup, Warm up, 0, 360, 360, 6 mins, 30%, 79, 1.1, 70%, 186, 2.6, 0, False
-intervalst, Work Interval, 361, 421, 60, 60 secs, 0%, 0, 0.0, 150%, 399, 5.6, 0, True
-intervalst, Rest Interval, 422, 512, 90, 1 mins 30 secs, 0%, 0, 0.0, 55%, 146, 2.1, 0, False
-intervalst, Work Interval, 513, 573, 60, 60 secs, 0%, 0, 0.0, 150%, 399, 5.6, 0, True
-intervalst, Rest Interval, 574, 664, 90, 1 mins 30 secs, 0%, 0, 0.0, 55%, 146, 2.1, 0, False
-intervalst, Work Interval, 665, 725, 60, 60 secs, 0%, 0, 0.0, 150%, 399, 5.6, 0, True
-intervalst, Rest Interval, 726, 816, 90, 1 mins 30 secs, 0%, 0, 0.0, 55%, 146, 2.1, 0, False
-steadystate, Steady state, 817, 827, 10, 10 secs, 0%, 0, 0.0, 265%, 704, 9.9, 0, False
-steadystate, Steady state, 828, 948, 120, 2 mins, 0%, 0, 0.0, 65%, 172, 2.4, 0, False
-steadystate, Steady state, 949, 959, 10, 10 secs, 0%, 0, 0.0, 265%, 704, 9.9, 0, False
-steadystate, Steady state, 960, 1050, 90, 1 mins 30 secs, 0%, 0, 0.0, 55%, 146, 2.1, 0, False
-steadystate, Steady state, 1051, 1061, 10, 10 secs, 0%, 0, 0.0, 265%, 704, 9.9, 0, False
-steadystate, Steady state, 1062, 1122, 60, 60 secs, 0%, 0, 0.0, 45%, 119, 1.7, 0, False
-steadystate, Steady state, 1123, 1133, 10, 10 secs, 0%, 0, 0.0, 265%, 704, 9.9, 0, False
-steadystate, Steady state, 1134, 1164, 30, 30 secs, 0%, 0, 0.0, 35%, 93, 1.3, 0, False
-steadystate, Steady state, 1165, 1175, 10, 10 secs, 0%, 0, 0.0, 265%, 704, 9.9, 0, False
-steadystate, Steady state, 1176, 1476, 300, 5 mins, 0%, 0, 0.0, 60%, 159, 2.2, 0, False
-steadystate, Steady state, 1477, 2077, 600, 10 mins, 0%, 0, 0.0, 89%, 236, 3.3, 0, False
-steadystate, Steady state, 2078, 2378, 300, 5 mins, 0%, 0, 0.0, 60%, 159, 2.2, 0, False
-steadystate, Steady state, 2379, 2979, 600, 10 mins, 0%, 0, 0.0, 89%, 236, 3.3, 0, False
-cooldown, Cool down, 2980, 3280, 300, 5 mins, 70%, 186, 2.6, 30%, 79, 1.1, 0, False
+warmup, Warm up, 0, 360, 360, 6 mins, 30, 79, 1.1, 70, 186, 2.6, 0, False
+intervalst, Work Interval, 361, 421, 60, 60 secs, 0, 0, 0.0, 150, 399, 5.6, 0, True
+intervalst, Rest Interval, 422, 512, 90, 1 mins 30 secs, 0, 0, 0.0, 55, 146, 2.1, 0, False
+intervalst, Work Interval, 513, 573, 60, 60 secs, 0, 0, 0.0, 150, 399, 5.6, 0, True
+intervalst, Rest Interval, 574, 664, 90, 1 mins 30 secs, 0, 0, 0.0, 55, 146, 2.1, 0, False
+intervalst, Work Interval, 665, 725, 60, 60 secs, 0, 0, 0.0, 150, 399, 5.6, 0, True
+intervalst, Rest Interval, 726, 816, 90, 1 mins 30 secs, 0, 0, 0.0, 55, 146, 2.1, 0, False
+steadystate, Steady state, 817, 827, 10, 10 secs, 0, 0, 0.0, 265, 704, 9.9, 0, False
+steadystate, Steady state, 828, 948, 120, 2 mins, 0, 0, 0.0, 65, 172, 2.4, 0, False
+steadystate, Steady state, 949, 959, 10, 10 secs, 0, 0, 0.0, 265, 704, 9.9, 0, False
+steadystate, Steady state, 960, 1050, 90, 1 mins 30 secs, 0, 0, 0.0, 55, 146, 2.1, 0, False
+steadystate, Steady state, 1051, 1061, 10, 10 secs, 0, 0, 0.0, 265, 704, 9.9, 0, False
+steadystate, Steady state, 1062, 1122, 60, 60 secs, 0, 0, 0.0, 45, 119, 1.7, 0, False
+steadystate, Steady state, 1123, 1133, 10, 10 secs, 0, 0, 0.0, 265, 704, 9.9, 0, False
+steadystate, Steady state, 1134, 1164, 30, 30 secs, 0, 0, 0.0, 35, 93, 1.3, 0, False
+steadystate, Steady state, 1165, 1175, 10, 10 secs, 0, 0, 0.0, 265, 704, 9.9, 0, False
+steadystate, Steady state, 1176, 1476, 300, 5 mins, 0, 0, 0.0, 60, 159, 2.2, 0, False
+steadystate, Steady state, 1477, 2077, 600, 10 mins, 0, 0, 0.0, 89, 236, 3.3, 0, False
+steadystate, Steady state, 2078, 2378, 300, 5 mins, 0, 0, 0.0, 60, 159, 2.2, 0, False
+steadystate, Steady state, 2379, 2979, 600, 10 mins, 0, 0, 0.0, 89, 236, 3.3, 0, False
+cooldown, Cool down, 2980, 3280, 300, 5 mins, 70, 186, 2.6, 30, 79, 1.1, 0, False
 ```
 
 ## json (javascript object notation) Example
