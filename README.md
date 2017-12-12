@@ -36,27 +36,27 @@ Jon's Mix - 2017-12-11
 
 This workout was often used by the Zwift development team to test features as well as get a solid hour of training in. It starts with a brief warmup and goes straight into short anaerobic bursts, shortly followed by max effort sprint training, only to be finished with 2 10 minute blocks of Sweet Spot Training.
 
-Warm up for 6 mins at 79 W to 186 W (1.1 W/Kg to 2.6 W/Kg) (30% FTP to 70% FTP)
-Work Interval for 60 secs at 399 W (5.6 W/Kg) (150% FTP)
-Rest Interval for 1 mins 30 secs at 146 W (2.1 W/Kg) (55% FTP)
-Work Interval for 60 secs at 399 W (5.6 W/Kg) (150% FTP)
-Rest Interval for 1 mins 30 secs at 146 W (2.1 W/Kg) (55% FTP)
-Work Interval for 60 secs at 399 W (5.6 W/Kg) (150% FTP)
-Rest Interval for 1 mins 30 secs at 146 W (2.1 W/Kg) (55% FTP)
-Steady state for 10 secs at 704 W (9.9 W/Kg) (265% FTP)
-Steady state for 2 mins at 172 W (2.4 W/Kg) (65% FTP)
-Steady state for 10 secs at 704 W (9.9 W/Kg) (265% FTP)
-Steady state for 1 mins 30 secs at 146 W (2.1 W/Kg) (55% FTP)
-Steady state for 10 secs at 704 W (9.9 W/Kg) (265% FTP)
-Steady state for 60 secs at 119 W (1.7 W/Kg) (45% FTP)
-Steady state for 10 secs at 704 W (9.9 W/Kg) (265% FTP)
-Steady state for 30 secs at 93 W (1.3 W/Kg) (35% FTP)
-Steady state for 10 secs at 704 W (9.9 W/Kg) (265% FTP)
-Steady state for 5 mins at 159 W (2.2 W/Kg) (60% FTP)
-Steady state for 10 mins at 236 W (3.3 W/Kg) (89% FTP)
-Steady state for 5 mins at 159 W (2.2 W/Kg) (60% FTP)
-Steady state for 10 mins at 236 W (3.3 W/Kg) (89% FTP)
-Cool down for 5 mins at 186 W to 79 W (2.6 W/Kg to 1.1 W/Kg) (70% FTP to 30% FTP)
+Warm up from 30% FTP to 70% FTP (79 W to 186 W, 1.1 W/Kg to 2.6 W/Kg) for 6 mins
+Work Interval 150% FTP (399 W, 5.6 W/Kg) for 60 secs
+Rest Interval 55% FTP (146 W, 2.1 W/Kg) for 1 mins 30 secs
+Work Interval 150% FTP (399 W, 5.6 W/Kg) for 60 secs
+Rest Interval 55% FTP (146 W, 2.1 W/Kg) for 1 mins 30 secs
+Work Interval 150% FTP (399 W, 5.6 W/Kg) for 60 secs
+Rest Interval 55% FTP (146 W, 2.1 W/Kg) for 1 mins 30 secs
+Steady state 265% FTP (704 W, 9.9 W/Kg) for 10 secs
+Steady state 65% FTP (172 W, 2.4 W/Kg) for 2 mins
+Steady state 265% FTP (704 W, 9.9 W/Kg) for 10 secs
+Steady state 55% FTP (146 W, 2.1 W/Kg) for 1 mins 30 secs
+Steady state 265% FTP (704 W, 9.9 W/Kg) for 10 secs
+Steady state 45% FTP (119 W, 1.7 W/Kg) for 60 secs
+Steady state 265% FTP (704 W, 9.9 W/Kg) for 10 secs
+Steady state 35% FTP (93 W, 1.3 W/Kg) for 30 secs
+Steady state 265% FTP (704 W, 9.9 W/Kg) for 10 secs
+Steady state 60% FTP (159 W, 2.2 W/Kg) for 5 mins
+Steady state 89% FTP (236 W, 3.3 W/Kg) for 10 mins
+Steady state 60% FTP (159 W, 2.2 W/Kg) for 5 mins
+Steady state 89% FTP (236 W, 3.3 W/Kg) for 10 mins
+Cool down from 70% FTP to 30% FTP (186 W to 79 W, 2.6 W/Kg to 1.1 W/Kg) for 5 mins
 ```
 
 ## CSV (Comma Separated Values) Example

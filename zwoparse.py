@@ -319,23 +319,22 @@ def main():
 
             for segment in workout['segments']:
                 if segment.power.min_intensity:
-                    intensity = "%s W to %s W (%s W/Kg to %s W/Kg) (%s%% FTP to %s%% FTP)" % (convert_to_abs_power(segment.power.min_intensity, ftp),
-                                                                                              convert_to_abs_power(
-                        segment.power.max_intensity, ftp),
-                        convert_to_watts_per_kilo(
-                        segment.power.min_intensity, ftp, kilos),
-                        convert_to_watts_per_kilo(
-                            segment.power.max_intensity, ftp, kilos),
+                    intensity = "from %s%% FTP to %s%% FTP (%s W to %s W, %s W/Kg to %s W/Kg)" % (
                         round_to_percentage(segment.power.min_intensity),
-                        round_to_percentage(segment.power.max_intensity))
+                        round_to_percentage(segment.power.max_intensity),
+                        convert_to_abs_power(segment.power.min_intensity, ftp),
+                        convert_to_abs_power(segment.power.max_intensity, ftp),
+                        convert_to_watts_per_kilo(
+                            segment.power.min_intensity, ftp, kilos),
+                        convert_to_watts_per_kilo(segment.power.max_intensity, ftp, kilos))
                 else:
-                    intensity = "%s W (%s W/Kg) (%s%% FTP)" % (convert_to_abs_power(segment.power.max_intensity, ftp),
-                                                               convert_to_watts_per_kilo(
-                        segment.power.max_intensity, ftp, kilos),
-                        round_to_percentage(segment.power.max_intensity))
+                    intensity = "%s%% FTP (%s W, %s W/Kg)" % (round_to_percentage(segment.power.max_intensity),
+                                                              convert_to_abs_power(
+                                                                  segment.power.max_intensity, ftp),
+                                                              convert_to_watts_per_kilo(segment.power.max_intensity, ftp, kilos))
 
-                lines.append("%s for %s at %s\n" % (
-                    segment.human_type(), segment.human_duration(), intensity))
+                lines.append("%s %s for %s\n" % (
+                    segment.human_type(), intensity, segment.human_duration()))
 
         text_file = open(outfile_with_extension, "w")
         for line in lines:
