@@ -374,9 +374,9 @@ def main():
             lines.append('Type, StartTime, EndTime, Duration, Duration Formatted, Min Power (% FTP), Min Power (W), Min Power (W/Kg), Max Power  (% FTP), Min Power (W), Min Power (W/Kg), Cadence, Work\n')
 
             for segment in workout['segments']:
-                lines.append('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (segment.segment_type, segment.human_type(), segment.start_time,
-                                                                              segment.end_time, segment.duration(), segment.human_duration(),
-                                                                              round_to_percentage(
+                lines.append('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (segment.human_type(), segment.start_time,
+                                                                           segment.end_time, segment.duration(), segment.human_duration(),
+                                                                           round_to_percentage(
                     segment.power.min_intensity),
                     convert_to_abs_power(
                     segment.power.min_intensity, ftp),
@@ -388,7 +388,7 @@ def main():
                     segment.power.max_intensity, ftp),
                     convert_to_watts_per_kilo(
                     segment.power.max_intensity, ftp, kilos),
-                    segment.cadence, segment.working))
+                    segment.cadence if segment.cadence else "", segment.working))
 
                 # textevents are not written to csv because csv is not hierarchic
 
