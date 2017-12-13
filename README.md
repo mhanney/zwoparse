@@ -6,33 +6,45 @@ comma separated values (.csv) or JavaScript object notation (.json).
 ## Usage
 
 ```
-usage: zwoparser.py [-h] [-f FTP] [-k KG] [-t {txt|csv|json}] [-o OUTFILE] file
+usage: zwoparse.py [-h] [-f FTP] [-k KG] [-v VERBOSE] [-m MINDURATION]
+                   [-t {txt,csv,json}] [-o OUTFILE]
+                   file
 
-example: python zwoparser.py JonsMix.zwo -f 266 -k 71 -t txt workout.txt
+Converts a Zwift Workout File to csv or plain text file.
 
 positional arguments:
   file
 
 optional arguments:
-  -h, --help            Show this help message and exit
-  -t, --type            The type of file to produce. csv = comma separated values file, txt = plain english, json = javascript object notation
+  -h, --help            show this help message and exit
   -f FTP, --ftp FTP     The rider's ftp as an integer, e.g. 266
   -k KG, --kg KG        The rider's weight in kilograms to the nearest
                         integer, e.g. 71
-  -v, --verbose         Verbose - also output to stdout
+  -v VERBOSE, --verbose VERBOSE
+                        Also output to stdout
+  -m MINDURATION, --minduration MINDURATION
+                        Minimum duration allowed for a block of work (in
+                        seconds). 0 means no minimum. For values above 0 an
+                        attempt will be made to combine workout sections
+                        together until the minimum duration specified is met.
+                        (Useful for fitting music to workout sections)
+  -t {txt,csv,json}, --type {txt,csv,json}
+                        The type of file to produce. csv = comma separated
+                        values file, txt = plain english. json = JavaScript
+                        object notation. The default is txt.
   -o OUTFILE, --outfile OUTFILE
                         The name of the output file, defauts to workout.txt if
                         none given
 ```
 
-## Plain Text Example
+## Plain text example
 
 ```
 python zwoparse.py JonsMix.zwo -f 266 -k 71
 ```
 
 ```
-Jon's Mix - 2017-12-11
+Jon's Mix - 2017-12-13
 
 This workout was often used by the Zwift development team to test features as well as get a solid hour of training in. It starts with a brief warmup and goes straight into short anaerobic bursts, shortly followed by max effort sprint training, only to be finished with 2 10 minute blocks of Sweet Spot Training.
 
@@ -59,299 +71,151 @@ Steady state 89% FTP (236 W, 3.3 W/Kg) for 10 mins
 Cool down from 70% FTP to 30% FTP (186 W to 79 W, 2.6 W/Kg to 1.1 W/Kg) for 5 mins
 ```
 
-## CSV (Comma Separated Values) Example
+## CSV example
 
 ```
 python zwoparse.py JonsMix.zwo -f 266 -k 71 -t csv
 ```
 
 ```
-Type, StartTime, EndTime, Duration, Duration Formatted, Min Power (% FTP), Min Power (W), Min Power (W/Kg), Max Power  (% FTP), Min Power (W), Min Power (W/Kg), Tempo, Work
-warmup, Warm up, 0, 360, 360, 6 mins, 30, 79, 1.1, 70, 186, 2.6, 0, False
-intervalst, Work Interval, 361, 421, 60, 60 secs, 0, 0, 0.0, 150, 399, 5.6, 0, True
-intervalst, Rest Interval, 422, 512, 90, 1 mins 30 secs, 0, 0, 0.0, 55, 146, 2.1, 0, False
-intervalst, Work Interval, 513, 573, 60, 60 secs, 0, 0, 0.0, 150, 399, 5.6, 0, True
-intervalst, Rest Interval, 574, 664, 90, 1 mins 30 secs, 0, 0, 0.0, 55, 146, 2.1, 0, False
-intervalst, Work Interval, 665, 725, 60, 60 secs, 0, 0, 0.0, 150, 399, 5.6, 0, True
-intervalst, Rest Interval, 726, 816, 90, 1 mins 30 secs, 0, 0, 0.0, 55, 146, 2.1, 0, False
-steadystate, Steady state, 817, 827, 10, 10 secs, 0, 0, 0.0, 265, 704, 9.9, 0, False
-steadystate, Steady state, 828, 948, 120, 2 mins, 0, 0, 0.0, 65, 172, 2.4, 0, False
-steadystate, Steady state, 949, 959, 10, 10 secs, 0, 0, 0.0, 265, 704, 9.9, 0, False
-steadystate, Steady state, 960, 1050, 90, 1 mins 30 secs, 0, 0, 0.0, 55, 146, 2.1, 0, False
-steadystate, Steady state, 1051, 1061, 10, 10 secs, 0, 0, 0.0, 265, 704, 9.9, 0, False
-steadystate, Steady state, 1062, 1122, 60, 60 secs, 0, 0, 0.0, 45, 119, 1.7, 0, False
-steadystate, Steady state, 1123, 1133, 10, 10 secs, 0, 0, 0.0, 265, 704, 9.9, 0, False
-steadystate, Steady state, 1134, 1164, 30, 30 secs, 0, 0, 0.0, 35, 93, 1.3, 0, False
-steadystate, Steady state, 1165, 1175, 10, 10 secs, 0, 0, 0.0, 265, 704, 9.9, 0, False
-steadystate, Steady state, 1176, 1476, 300, 5 mins, 0, 0, 0.0, 60, 159, 2.2, 0, False
-steadystate, Steady state, 1477, 2077, 600, 10 mins, 0, 0, 0.0, 89, 236, 3.3, 0, False
-steadystate, Steady state, 2078, 2378, 300, 5 mins, 0, 0, 0.0, 60, 159, 2.2, 0, False
-steadystate, Steady state, 2379, 2979, 600, 10 mins, 0, 0, 0.0, 89, 236, 3.3, 0, False
-cooldown, Cool down, 2980, 3280, 300, 5 mins, 70, 186, 2.6, 30, 79, 1.1, 0, False
+Type, StartTime, EndTime, Duration, Duration Formatted, Min Power (% FTP), Min Power (W), Min Power (W/Kg), Max Power  (% FTP), Min Power (W), Min Power (W/Kg), Cadence, Work
+warmup,Warm up,0,360,360,6 mins,30,79,1.1,70,186,2.6,None,False
+intervalst,Work Interval,360,420,60,60 secs,0,0,0.0,150,399,5.6,None,True
+intervalst,Rest Interval,420,510,90,1 mins 30 secs,0,0,0.0,55,146,2.1,None,False
+intervalst,Work Interval,510,570,60,60 secs,0,0,0.0,150,399,5.6,None,True
+intervalst,Rest Interval,570,660,90,1 mins 30 secs,0,0,0.0,55,146,2.1,None,False
+intervalst,Work Interval,660,720,60,60 secs,0,0,0.0,150,399,5.6,None,True
+intervalst,Rest Interval,720,810,90,1 mins 30 secs,0,0,0.0,55,146,2.1,None,False
+steadystate,Steady state,810,820,10,10 secs,0,0,0.0,265,704,9.9,None,False
+steadystate,Steady state,820,940,120,2 mins,0,0,0.0,65,172,2.4,None,False
+steadystate,Steady state,940,950,10,10 secs,0,0,0.0,265,704,9.9,None,False
+steadystate,Steady state,950,1040,90,1 mins 30 secs,0,0,0.0,55,146,2.1,None,False
+steadystate,Steady state,1040,1050,10,10 secs,0,0,0.0,265,704,9.9,None,False
+steadystate,Steady state,1050,1110,60,60 secs,0,0,0.0,45,119,1.7,None,False
+steadystate,Steady state,1110,1120,10,10 secs,0,0,0.0,265,704,9.9,None,False
+steadystate,Steady state,1120,1150,30,30 secs,0,0,0.0,35,93,1.3,None,False
+steadystate,Steady state,1150,1160,10,10 secs,0,0,0.0,265,704,9.9,None,False
+steadystate,Steady state,1160,1460,300,5 mins,0,0,0.0,60,159,2.2,None,False
+steadystate,Steady state,1460,2060,600,10 mins,0,0,0.0,89,236,3.3,None,False
+steadystate,Steady state,2060,2360,300,5 mins,0,0,0.0,60,159,2.2,None,False
+steadystate,Steady state,2360,2960,600,10 mins,0,0,0.0,89,236,3.3,None,False
+cooldown,Cool down,2960,3260,300,5 mins,70,186,2.6,30,79,1.1,None,False
 ```
 
-## json (javascript object notation) Example
+## json example, with minimum duration of work set to 5 mins (300 seconds)
 
 ```
-python zwoparse.py JonsMix.zwo -f 266 -k 71 -t json
+python zwoparse.py JonsMix.zwo -f 266 -k 71 -t json -m 300
 ```
 
 ```
 {
-  "name": "Jon's Mix - 2017-12-11",
+  "name": "Jon's Mix - 2017-12-13",
   "description":
     "This workout was often used by the Zwift development team to test features as well as get a solid hour of training in. It starts with a brief warmup and goes straight into short anaerobic bursts, shortly followed by max effort sprint training, only to be finished with 2 10 minute blocks of Sweet Spot Training.",
   "segments": [
     {
-      "cadence": 0,
-      "duration_ms": 360000,
-      "end_time": 360,
+      "cadence": null,
+      "duration_ms": 510000,
+      "end_time": 510,
       "power": {
         "max_intensity": "0.69999999",
         "min_intensity": "0.30000001"
       },
-      "segment_type": "warmup",
+      "segment_type": "combined",
       "start_time": 0,
+      "textevents": [],
       "working": false
     },
     {
-      "cadence": 0,
-      "duration_ms": 60000,
-      "end_time": 421,
+      "cadence": null,
+      "duration_ms": 310000,
+      "end_time": 820,
       "power": {
-        "max_intensity": "1.5",
+        "max_intensity": "2.6500001",
         "min_intensity": 0
       },
-      "segment_type": "intervalst",
-      "start_time": 361,
+      "segment_type": "combined",
+      "start_time": 510,
+      "textevents": [],
       "working": true
     },
     {
-      "cadence": 0,
-      "duration_ms": 90000,
-      "end_time": 512,
-      "power": {
-        "max_intensity": "0.55000001",
-        "min_intensity": 0
-      },
-      "segment_type": "intervalst",
-      "start_time": 422,
-      "working": false
-    },
-    {
-      "cadence": 0,
-      "duration_ms": 60000,
-      "end_time": 573,
-      "power": {
-        "max_intensity": "1.5",
-        "min_intensity": 0
-      },
-      "segment_type": "intervalst",
-      "start_time": 513,
-      "working": true
-    },
-    {
-      "cadence": 0,
-      "duration_ms": 90000,
-      "end_time": 664,
-      "power": {
-        "max_intensity": "0.55000001",
-        "min_intensity": 0
-      },
-      "segment_type": "intervalst",
-      "start_time": 574,
-      "working": false
-    },
-    {
-      "cadence": 0,
-      "duration_ms": 60000,
-      "end_time": 725,
-      "power": {
-        "max_intensity": "1.5",
-        "min_intensity": 0
-      },
-      "segment_type": "intervalst",
-      "start_time": 665,
-      "working": true
-    },
-    {
-      "cadence": 0,
-      "duration_ms": 90000,
-      "end_time": 816,
-      "power": {
-        "max_intensity": "0.55000001",
-        "min_intensity": 0
-      },
-      "segment_type": "intervalst",
-      "start_time": 726,
-      "working": false
-    },
-    {
-      "cadence": 0,
-      "duration_ms": 10000,
-      "end_time": 827,
+      "cadence": null,
+      "duration_ms": 340000,
+      "end_time": 1160,
       "power": {
         "max_intensity": "2.6500001",
         "min_intensity": 0
       },
-      "segment_type": "steadystate",
-      "start_time": 817,
+      "segment_type": "combined",
+      "start_time": 820,
+      "textevents": [],
       "working": false
     },
     {
-      "cadence": 0,
-      "duration_ms": 120000,
-      "end_time": 948,
-      "power": {
-        "max_intensity": "0.64999998",
-        "min_intensity": 0
-      },
-      "segment_type": "steadystate",
-      "start_time": 828,
-      "working": false
-    },
-    {
-      "cadence": 0,
-      "duration_ms": 10000,
-      "end_time": 959,
-      "power": {
-        "max_intensity": "2.6500001",
-        "min_intensity": 0
-      },
-      "segment_type": "steadystate",
-      "start_time": 949,
-      "working": false
-    },
-    {
-      "cadence": 0,
-      "duration_ms": 90000,
-      "end_time": 1050,
-      "power": {
-        "max_intensity": "0.55000001",
-        "min_intensity": 0
-      },
-      "segment_type": "steadystate",
-      "start_time": 960,
-      "working": false
-    },
-    {
-      "cadence": 0,
-      "duration_ms": 10000,
-      "end_time": 1061,
-      "power": {
-        "max_intensity": "2.6500001",
-        "min_intensity": 0
-      },
-      "segment_type": "steadystate",
-      "start_time": 1051,
-      "working": false
-    },
-    {
-      "cadence": 0,
-      "duration_ms": 60000,
-      "end_time": 1122,
-      "power": {
-        "max_intensity": "0.44999999",
-        "min_intensity": 0
-      },
-      "segment_type": "steadystate",
-      "start_time": 1062,
-      "working": false
-    },
-    {
-      "cadence": 0,
-      "duration_ms": 10000,
-      "end_time": 1133,
-      "power": {
-        "max_intensity": "2.6500001",
-        "min_intensity": 0
-      },
-      "segment_type": "steadystate",
-      "start_time": 1123,
-      "working": false
-    },
-    {
-      "cadence": 0,
-      "duration_ms": 30000,
-      "end_time": 1164,
-      "power": {
-        "max_intensity": "0.35000002",
-        "min_intensity": 0
-      },
-      "segment_type": "steadystate",
-      "start_time": 1134,
-      "working": false
-    },
-    {
-      "cadence": 0,
-      "duration_ms": 10000,
-      "end_time": 1175,
-      "power": {
-        "max_intensity": "2.6500001",
-        "min_intensity": 0
-      },
-      "segment_type": "steadystate",
-      "start_time": 1165,
-      "working": false
-    },
-    {
-      "cadence": 0,
+      "cadence": null,
       "duration_ms": 300000,
-      "end_time": 1476,
+      "end_time": 1460,
       "power": {
         "max_intensity": "0.60000002",
         "min_intensity": 0
       },
       "segment_type": "steadystate",
-      "start_time": 1176,
+      "start_time": 1160,
+      "textevents": [],
       "working": false
     },
     {
-      "cadence": 0,
+      "cadence": null,
       "duration_ms": 600000,
-      "end_time": 2077,
+      "end_time": 2060,
       "power": {
         "max_intensity": "0.88999999",
         "min_intensity": 0
       },
       "segment_type": "steadystate",
-      "start_time": 1477,
+      "start_time": 1460,
+      "textevents": [],
       "working": false
     },
     {
-      "cadence": 0,
+      "cadence": null,
       "duration_ms": 300000,
-      "end_time": 2378,
+      "end_time": 2360,
       "power": {
         "max_intensity": "0.60000002",
         "min_intensity": 0
       },
       "segment_type": "steadystate",
-      "start_time": 2078,
+      "start_time": 2060,
+      "textevents": [],
       "working": false
     },
     {
-      "cadence": 0,
+      "cadence": null,
       "duration_ms": 600000,
-      "end_time": 2979,
+      "end_time": 2960,
       "power": {
         "max_intensity": "0.88999999",
         "min_intensity": 0
       },
       "segment_type": "steadystate",
-      "start_time": 2379,
+      "start_time": 2360,
+      "textevents": [],
       "working": false
     },
     {
-      "cadence": 0,
+      "cadence": null,
       "duration_ms": 300000,
-      "end_time": 3280,
+      "end_time": 3260,
       "power": {
         "max_intensity": "0.30000001",
         "min_intensity": "0.69999999"
       },
       "segment_type": "cooldown",
-      "start_time": 2980,
+      "start_time": 2960,
+      "textevents": [],
       "working": false
     }
   ]

@@ -5,25 +5,36 @@ Parse a Zwift Workout XML file and output a plain text file, csv or json describ
 Usage:
 ======
 
-usage: zwoparser.py [-h] [-f FTP] [-k KG] [-t {txt|csv|json}] [-o OUTFILE] file
+usage: zwoparse.py [-h] [-f FTP] [-k KG] [-v VERBOSE] [-m MINDURATION]
+                   [-t {txt,csv,json}] [-o OUTFILE]
+                   file
 
-example: python zwoparser.py JonsMix.zwo -f 266 -k 71 -t txt workout.txt
+Converts a Zwift Workout File to csv or plain text file.
 
 positional arguments:
   file
 
 optional arguments:
-  -h, --help            Show this help message and exit
-  -t, --type            The type of file to produce. csv = comma separated values file, txt = plain english, json = javascript object notation
+  -h, --help            show this help message and exit
   -f FTP, --ftp FTP     The rider's ftp as an integer, e.g. 266
   -k KG, --kg KG        The rider's weight in kilograms to the nearest
                         integer, e.g. 71
-  -v, --verbose         Verbose - also output to stdout
-  -m, --min-duration    Minimum duration allowed for a block of work (in seconds). 0 means no minimum. For values above 0 an attempt will be made to combine 
-                        workout sections together until the minimum duration specified is met.
+  -v VERBOSE, --verbose VERBOSE
+                        Also output to stdout
+  -m MINDURATION, --minduration MINDURATION
+                        Minimum duration allowed for a block of work (in
+                        seconds). 0 means no minimum. For values above 0 an
+                        attempt will be made to combine workout sections
+                        together until the minimum duration specified is met.
+                        (Useful for fitting music to workout sections)
+  -t {txt,csv,json}, --type {txt,csv,json}
+                        The type of file to produce. csv = comma separated
+                        values file, txt = plain english. json = JavaScript
+                        object notation. The default is txt.
   -o OUTFILE, --outfile OUTFILE
                         The name of the output file, defauts to workout.txt if
                         none given
+
 """
 import argparse
 import xml.etree.ElementTree as ET
