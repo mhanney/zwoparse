@@ -79,27 +79,27 @@ python zwoparse.py JonsMix.zwo -f 266 -k 71 -t csv
 
 ```
 Type, StartTime, EndTime, Duration, Duration Formatted, Min Power (% FTP), Min Power (W), Min Power (W/Kg), Max Power  (% FTP), Min Power (W), Min Power (W/Kg), Cadence, Work
-warmup,Warm up,0,360,360,6 mins,30,79,1.1,70,186,2.6,None,False
-intervalst,Work Interval,360,420,60,60 secs,0,0,0.0,150,399,5.6,None,True
-intervalst,Rest Interval,420,510,90,1 mins 30 secs,0,0,0.0,55,146,2.1,None,False
-intervalst,Work Interval,510,570,60,60 secs,0,0,0.0,150,399,5.6,None,True
-intervalst,Rest Interval,570,660,90,1 mins 30 secs,0,0,0.0,55,146,2.1,None,False
-intervalst,Work Interval,660,720,60,60 secs,0,0,0.0,150,399,5.6,None,True
-intervalst,Rest Interval,720,810,90,1 mins 30 secs,0,0,0.0,55,146,2.1,None,False
-steadystate,Steady state,810,820,10,10 secs,0,0,0.0,265,704,9.9,None,False
-steadystate,Steady state,820,940,120,2 mins,0,0,0.0,65,172,2.4,None,False
-steadystate,Steady state,940,950,10,10 secs,0,0,0.0,265,704,9.9,None,False
-steadystate,Steady state,950,1040,90,1 mins 30 secs,0,0,0.0,55,146,2.1,None,False
-steadystate,Steady state,1040,1050,10,10 secs,0,0,0.0,265,704,9.9,None,False
-steadystate,Steady state,1050,1110,60,60 secs,0,0,0.0,45,119,1.7,None,False
-steadystate,Steady state,1110,1120,10,10 secs,0,0,0.0,265,704,9.9,None,False
-steadystate,Steady state,1120,1150,30,30 secs,0,0,0.0,35,93,1.3,None,False
-steadystate,Steady state,1150,1160,10,10 secs,0,0,0.0,265,704,9.9,None,False
-steadystate,Steady state,1160,1460,300,5 mins,0,0,0.0,60,159,2.2,None,False
-steadystate,Steady state,1460,2060,600,10 mins,0,0,0.0,89,236,3.3,None,False
-steadystate,Steady state,2060,2360,300,5 mins,0,0,0.0,60,159,2.2,None,False
-steadystate,Steady state,2360,2960,600,10 mins,0,0,0.0,89,236,3.3,None,False
-cooldown,Cool down,2960,3260,300,5 mins,70,186,2.6,30,79,1.1,None,False
+Warm up,0,360,360,6 mins,30,79,1.1,70,186,2.6,,False
+Work Interval,360,420,60,60 secs,0,0,0.0,150,399,5.6,,True
+Rest Interval,420,510,90,1 mins 30 secs,0,0,0.0,55,146,2.1,,False
+Work Interval,510,570,60,60 secs,0,0,0.0,150,399,5.6,,True
+Rest Interval,570,660,90,1 mins 30 secs,0,0,0.0,55,146,2.1,,False
+Work Interval,660,720,60,60 secs,0,0,0.0,150,399,5.6,,True
+Rest Interval,720,810,90,1 mins 30 secs,0,0,0.0,55,146,2.1,,False
+Steady state,810,820,10,10 secs,0,0,0.0,265,704,9.9,,False
+Steady state,820,940,120,2 mins,0,0,0.0,65,172,2.4,,False
+Steady state,940,950,10,10 secs,0,0,0.0,265,704,9.9,,False
+Steady state,950,1040,90,1 mins 30 secs,0,0,0.0,55,146,2.1,,False
+Steady state,1040,1050,10,10 secs,0,0,0.0,265,704,9.9,,False
+Steady state,1050,1110,60,60 secs,0,0,0.0,45,119,1.7,,False
+Steady state,1110,1120,10,10 secs,0,0,0.0,265,704,9.9,,False
+Steady state,1120,1150,30,30 secs,0,0,0.0,35,93,1.3,,False
+Steady state,1150,1160,10,10 secs,0,0,0.0,265,704,9.9,,False
+Steady state,1160,1460,300,5 mins,0,0,0.0,60,159,2.2,,False
+Steady state,1460,2060,600,10 mins,0,0,0.0,89,236,3.3,,False
+Steady state,2060,2360,300,5 mins,0,0,0.0,60,159,2.2,,False
+Steady state,2360,2960,600,10 mins,0,0,0.0,89,236,3.3,,False
+Cool down,2960,3260,300,5 mins,70,186,2.6,30,79,1.1,,False
 ```
 
 ## json example, with minimum duration of work set to 5 mins (300 seconds)
