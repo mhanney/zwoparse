@@ -1,0 +1,57 @@
+<workout_file>
+    <author>T.Delfs - Momentum Cycling</author>
+    <name>Chain Breaker</name>
+    <description>Description: A roller coaster of a work-out that pushes into the red zone
+
+Focus: Lactate Threshold
+
+Intensity: Moderate-High - Zones 3 - 5+
+
+Cadence: Recommended at 95 - 105+ rpm
+    </description>
+    <sportType>bike</sportType>
+    <tags>
+        <tag name="INTERVALS"/>
+        <tag name="FTP"/>
+    </tags>
+    <workout>
+        <Warmup Duration="600" PowerLow="0.40450001" PowerHigh="0.75449997"/>
+        <IntervalsT Repeat="3" OnDuration="30" OffDuration="90" OnPower="1.0044999" OffPower="0.70449996" Cadence="105" CadenceResting="95"/>
+        <SteadyState Duration="60" Power="0.75"/>
+        <SteadyState Duration="60" Power="0.89999998"/>
+        <SteadyState Duration="60" Power="1.05"/>
+        <SteadyState Duration="60" Power="0.89999998"/>
+        <SteadyState Duration="60" Power="0.75"/>
+        <SteadyState Duration="180" Power="0.55449998"/>
+        <SteadyState Duration="60" Power="1.1"/>
+        <SteadyState Duration="60" Power="0.94999999"/>
+        <SteadyState Duration="60" Power="0.80000001"/>
+        <SteadyState Duration="60" Power="0.94999999"/>
+        <SteadyState Duration="60" Power="1.1"/>
+        <SteadyState Duration="180" Power="0.55449998"/>
+        <SteadyState Duration="120" Power="0.80000001"/>
+        <SteadyState Duration="120" Power="0.94999999"/>
+        <SteadyState Duration="120" Power="1.1"/>
+        <SteadyState Duration="120" Power="0.94999999"/>
+        <SteadyState Duration="120" Power="0.80000001"/>
+        <SteadyState Duration="180" Power="0.55449998"/>
+        <SteadyState Duration="120" Power="1.1"/>
+        <SteadyState Duration="120" Power="0.94999999"/>
+        <SteadyState Duration="120" Power="0.80000001"/>
+        <SteadyState Duration="120" Power="0.94999999"/>
+        <SteadyState Duration="120" Power="1.1"/>
+        <SteadyState Duration="180" Power="0.55449998"/>
+        <SteadyState Duration="60" Power="0.85000002"/>
+        <SteadyState Duration="60" Power="1"/>
+        <SteadyState Duration="60" Power="1.15"/>
+        <SteadyState Duration="60" Power="1"/>
+        <SteadyState Duration="60" Power="0.85000002"/>
+        <SteadyState Duration="180" Power="0.55449998"/>
+        <SteadyState Duration="60" Power="1.2"/>
+        <SteadyState Duration="60" Power="1.05"/>
+        <SteadyState Duration="60" Power="0.89999998"/>
+        <SteadyState Duration="60" Power="1.05"/>
+        <SteadyState Duration="60" Power="1.2"/>
+        <Cooldown Duration="540" PowerLow="0.6045" PowerHigh="0.50449997"/>
+    </workout>
+</workout_file>

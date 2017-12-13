@@ -1,0 +1,33 @@
+<workout_file>
+    <author>T.Delfs - Momentum Cycling</author>
+    <name>Honey Badger</name>
+    <description>Description:  A Sweet Spot work-out with intervals mixing short and hard intervals and long and steady intervals
+
+Focus: Sweet Spot Intervals with pre-set Cadence
+
+Intensity:  Moderate - High - Zone 4 focus
+
+Cadence: Set at - 90 - 105 rpm
+
+Notes: Emphasis in on Power Output. If you find it difficult to match Cadence and Power Output targets then set the priority on keeping the Power Output as close to the target as possible</description>
+    <sportType>bike</sportType>
+    <tags>
+        <tag name="INTERVALS"/>
+        <tag name="FTP"/>
+    </tags>
+    <workout>
+        <Warmup Duration="600" PowerLow="0.40450001" PowerHigh="0.75449997"/>
+        <IntervalsT Repeat="3" OnDuration="30" OffDuration="90" OnPower="1.0044999" OffPower="0.70449996" Cadence="105" CadenceResting="95"/>
+        <SteadyState Duration="180" Power="0.55449998"/>
+        <IntervalsT Repeat="6" OnDuration="90" OffDuration="30" OnPower="0.95449996" OffPower="0.70449996" Cadence="100" CadenceResting="90"/>
+        <SteadyState Duration="180" Power="0.50449997" Cadence="90"/>
+        <SteadyState Duration="480" Power="0.85000002" Cadence="100"/>
+        <SteadyState Duration="180" Power="0.50449997" Cadence="90"/>
+        <IntervalsT Repeat="11" OnDuration="45" OffDuration="15" OnPower="0.94999999" OffPower="0.75" Cadence="100" CadenceResting="90"/>
+        <SteadyState Duration="180" Power="0.50449997"/>
+        <SteadyState Duration="480" Power="0.94999999" Cadence="100"/>
+        <SteadyState Duration="180" Power="0.50449997" Cadence="90"/>
+        <IntervalsT Repeat="8" OnDuration="60" OffDuration="30" OnPower="1" OffPower="0.80000001" Cadence="105" CadenceResting="90"/>
+        <Cooldown Duration="480" PowerLow="0.65449995" PowerHigh="0.50449997"/>
+    </workout>
+</workout_file>

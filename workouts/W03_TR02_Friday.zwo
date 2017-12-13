@@ -1,0 +1,108 @@
+<workout_file>
+	<author>Zwift Study (via TrainingPeaks)</author>
+	<name>SST/L4 -90-100min - 3 sets 4x3min (88-92-95%)</name>
+	<description>15min progressive Warmup followed by
+
+3 sets 4x3min SST/L4 (88-92-95%) and 10min Pause between sets
+
+end the ride with 30min steady endurance.</description>
+	<sportType>bike</sportType>
+	<tags/>
+	<workout>
+		<SteadyState Duration="180" Power="0.5">
+			<textevent timeoffset="0" message="Progressive warm up into tempo pace (50-80%)"/>
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.6">
+			<textevent timeoffset="180" message="Progressive warm up into tempo pace (50-80%)"/>
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.65">
+			<textevent timeoffset="360" message="Progressive warm up into tempo pace (50-80%)"/>
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.74">
+			<textevent timeoffset="540" message="Progressive warm up into tempo pace (50-80%)"/>
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.8">
+			<textevent timeoffset="720" message="Progressive warm up into tempo pace (50-80%)"/>
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.88">
+			<textevent timeoffset="900" message="3min @88%"/>
+		</SteadyState>
+		<SteadyState Duration="120" Power="0.55">
+			<textevent timeoffset="1080" message="2min Pause"/>
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.88">
+			<textevent timeoffset="1200" message="3min @88%"/>
+		</SteadyState>
+		<SteadyState Duration="120" Power="0.55">
+			<textevent timeoffset="1380" message="2min Pause"/>
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.88">
+			<textevent timeoffset="1500" message="3min @88%"/>
+		</SteadyState>
+		<SteadyState Duration="120" Power="0.55">
+			<textevent timeoffset="1680" message="2min Pause"/>
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.88">
+			<textevent timeoffset="1800" message="3min @88%"/>
+		</SteadyState>
+		<SteadyState Duration="120" Power="0.55">
+			<textevent timeoffset="1980" message="2min Pause"/>
+		</SteadyState>
+		<SteadyState Duration="480" Power="0.55">
+			<textevent timeoffset="2100" message="8min Easy"/>
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.92">
+			<textevent timeoffset="2580" message="3min @92%"/>
+		</SteadyState>
+		<SteadyState Duration="120" Power="0.55">
+			<textevent timeoffset="2760" message="2min Pause"/>
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.92">
+			<textevent timeoffset="2880" message="3min @92%"/>
+		</SteadyState>
+		<SteadyState Duration="120" Power="0.55">
+			<textevent timeoffset="3060" message="2min Pause"/>
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.92">
+			<textevent timeoffset="3180" message="3min @92%"/>
+		</SteadyState>
+		<SteadyState Duration="120" Power="0.55">
+			<textevent timeoffset="3360" message="2min Pause"/>
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.92">
+			<textevent timeoffset="3480" message="3min @92%"/>
+		</SteadyState>
+		<SteadyState Duration="120" Power="0.55">
+			<textevent timeoffset="3660" message="2min Pause"/>
+		</SteadyState>
+		<SteadyState Duration="480" Power="0.55">
+			<textevent timeoffset="3780" message="8min Easy"/>
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.95">
+			<textevent timeoffset="4260" message="3min @92%"/>
+		</SteadyState>
+		<SteadyState Duration="120" Power="0.55">
+			<textevent timeoffset="4440" message="2min Pause"/>
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.95">
+			<textevent timeoffset="4560" message="3min @92%"/>
+		</SteadyState>
+		<SteadyState Duration="120" Power="0.55">
+			<textevent timeoffset="4740" message="2min Pause"/>
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.95">
+			<textevent timeoffset="4860" message="3min @92%"/>
+		</SteadyState>
+		<SteadyState Duration="120" Power="0.55">
+			<textevent timeoffset="5040" message="2min Pause"/>
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.95">
+			<textevent timeoffset="5160" message="3min @92%"/>
+		</SteadyState>
+		<SteadyState Duration="120" Power="0.55">
+			<textevent timeoffset="5340" message="2min Pause"/>
+		</SteadyState>
+		<Cooldown Duration="300" PowerLow="0.5" PowerHigh="0.5">
+		</Cooldown>
+	</workout>
+</workout_file>
