@@ -393,6 +393,7 @@ def main():
 
                 # textevents are not written to csv because csv is not hierarchic
         elif filetype in ('erg', 'mrc'):
+            text_lines = []
             lines.append('[COURSE HEADER]\n')
             if filetype == 'erg':
                 lines.append('FTP = %d\n' % ftp )
@@ -421,7 +422,15 @@ def main():
                     lines.append( '%5.2f %4.0f\n' % ( t0, 100.0*float(p0)))
                     lines.append( '%5.2f %4.0f\n' % ( t1, 100.0*float(p1)))
 
+                for textevent in segment.textevents:
+                    text_lines.append( '%5.2f %s\n' % ( t0, textevent.message ) )
+
             lines.append('[END COURSE DATA]\n')
+            if len(text_lines)>0:
+                lines.append('[COURSE TEXT]\n')
+                lines += text_lines
+                lines.append('[END COURSE TEXT]\n')
+
 
         elif filetype == "json":
             segments_json = ','.join([x.toJSON() for x in workout['segments']])
